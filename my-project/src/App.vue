@@ -2,6 +2,17 @@
   <div id="app">
 
     <router-view></router-view>
+
+    <div class="link-benkyo">
+      <ul class="table-list">
+        <li>
+          <a href="/">top</a>
+        </li>
+        <li>
+          <a href="http://localhost:8080/#/vuesan">v-if / v-show</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -24,8 +35,11 @@ export default {
     padding:0;
     box-sizing: border-box;
   }
+  li{
+    list-style: none;
+  }
   .header{
-    background: #ccc;
+    background: #cccc;
     padding:10px;
   }
   .dec{
@@ -42,5 +56,26 @@ export default {
   .content{
     background: #f1f1f1;
     padding:10px;
+  }
+  .note{
+    color: #ff3366;
+  }
+
+
+  .link-benkyo{
+    width:50%;
+    margin:0 auto;
+    padding:20px;
+  }
+  .table-list{
+    table-layout: fixed;
+    display: table;
+    width:100%;
+    margin:30px 0;
+    background: #f1f1f1;
+  }
+  .table-list li{
+    display: table-cell;
+    text-align: center;
   }
 </style>
