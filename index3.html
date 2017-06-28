@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="./test.css" media="screen">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<header class="header">
+  <h1>Vue.js で条件分岐 and 算出プロパティ</h1>
+  <p>参考：http://chibinowa.net/note/vuejs/vue-3.html</p>
+  <p>v-if / v-show / 算出プロパティを使って条件によって要素や属性などの内容を切り替えます。</p>
+</header>
+<div id="app" class="content">
+
+
+  <dl>
+    <dt><span>v-show</span> と <span>v-if</span></dt>
+    <dd>
+
+    </dd>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </dl>
+
+    <p>色々な種類のデータの表示方法を覚えました！</p>
+</div>
+<script>
+
+  var vm = new Vue({
+      el:"#app",
+      data:{
+          hellow:"hellow world",
+          countr: 0,
+          listtest:["りんご" , "こあら" , "らっこ"]
+      },
+      methods:{
+          test1:function () {
+            this.countr ++,
+            this.hellow = "hellow vue.js"
+          },
+          test2: function () {
+              this.$set(this.listtest, 0, "もぶぶ")
+          }
+
+      }
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="./test.css" media="screen">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    .header{
+      background: #ccc;
+      padding:10px;
+      border:1px solid #bbb;
+    }
+    .content{
+      padding:20px;
+    }
+    dt{
+      margin-bottom:5p;
+      font-size:22px;
+      font-weight:bold;
+    }
+    dt span{
+      color: #ff3366;
+
+    }
+    dd{
+      margin:0 0 30px;
+      padding:0 0 30px;
+      border-bottom:2px solid #dfdfdf;
+    }
+    code{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <h1>Vue.js で文字やリストを動的に表示する</h1>
+  <p>参考：http://chibinowa.net/note/vuejs/vue-1.html</p>
+</header>
+<div id="app" class="content">
+
+
+  <dl>
+
+    <dt>単純な文字列を表示する</dt>
+    <dd>
+      <p>{{ message }}</p>
+      <code v-pre>{{ message }}</code>
+    </dd>
+
+
+    <dt>データをHTMLで表示する <span>v-html</span></dt>
+    <dd><span v-html="message"></span>
+      <p>ウェブサイトで動的に任意のHTMLを描画することは、非常に危険なので、信頼できるテキストのみ"v-html"を使う。</p></dd>
+
+S
+    <dt>要素の属性部分にデータを使用する<span>v-bind</span></dt>
+    <dd>属性部分にデータを展開する場合は v-bind="hoge" を使う。
+      <pre><div><a v-bind:href="url">{{ message }}</a></div></pre>
+      <strong>v-vind:href="url"</strong><br>
+     　┗v-vindは省略できるが、<code>:href="url"</code>とできる <br>
+      <strong>慣れるまではきちんとつけておく</strong>。
+    </dd>
+
+
+    <dt>Vue でパースしない <span> v-pre</span></dt>
+    <dd>
+      v-pre　を使えばパースしなくなる <br>
+      <pre><p><a v-bind:href="url" v-pre>{{ message }}</a>←使った</p>　</pre>
+      <code v-pre>＜p>＜a v-bind:href="url" v-pre>{{ message }}＜/a>＜/p></code>
+    </dd>
+
+    <dt>ディレクティブは1度だけ展開<span>v-once</span></dt>
+    <dd>
+      v-once ディレクティブは1度だけ展開して、リアクティブを解除(キャッシュさせることができる)
+      <br>
+      <p v-once>This will never change: {{msg}}</p>
+      <p v-once>This will never change: <code v-pre="">{{msg}}</code></p>
+    </dd>
+
+
+    <dt>入力と連動 <span>v-model="登録したdata"</span></dt>
+    <dd>
+      <input v-model="inputer"><code v-pre>＜input v-model="inputer"></code>
+      <pre><p>{{ inputer }}</p></pre>
+      <p>ちゃんと　data:　に対して登録しておかないと<strogn>v-model</strogn>は使えない。</p>
+
+    </dd>
+
+  <dt>配列の処理　ループ <span>v-for</span></dt>
+    <dd>
+      test2list: ['りんご', 'ばなな', 'いちご']　をループさせる。<br>
+      まずは data:　に test2listを登録する <br>
+
+      <code v-pre="">＜li v-for="val in test2list">{{val}}＜/li></code>　にて表示が可能
+
+      <pre>
+        <ul><li v-for="val in test2list">{{val}}</li></ul>
+      </pre>
+      jsの　<strong>for (変数名 in オブジェクト){変数名}</strong>と同じ考え方となる。
+
+    </dd>
+
+  <dt>連想配列の表示 <span>(val, key) in test3list</span></dt>
+    <dd>
+      test3list: { <br>
+      'a': 'ハンバーグ',<br>
+      'b': '焼肉',<br>
+      'c': 'パスタ'<br>
+      }, <br>
+      こういうのがある時の表示方法 <br>
+      <strong>変数名 in オブジェクト</strong>だとさっきと同じように出せるが、<br><strong>カッコを使うとキーと値が一緒に受け取れる</strong>。配列の場合はインデックスが受け取れます。
+      <code v-pre="">＜li v-for="(val, key) in test3list">(Key:{{ key }}) {{ val }}＜/li></code>
+      <pre>
+        <li v-for="(val, key) in test3list">(Key:{{ key }}) {{ val }}</li>
+      </pre>
+
+    </dd>
+
+
+    <dt>ネストされた少し複雑なオブジェクトのリストをループ <span>v-for="(変数, idx) in オブジェクト</span></dt>
+    <dd>
+      test4list: [{//ネスとされた配列 <br>
+      'name': 'とまと', <br>
+      'price': '100' <br>
+      }, { <br>
+      'name': 'れたす', <br>
+      'price': '200' <br>
+      }, { <br>
+      'name': 'きゅうり', <br>
+      'price': '300' <br>
+      }], <br><br>
+      これも、v-for="(変数, idx) in オブジェクト"　とすると<br>
+      <code v-pre>{{idx}} (この場合はindex番号)も出力できる。</code>
+      <code v-pre>＜li v-for="(val, idx) in test4list" v-bind:key="val.name">{{idx}}{{ val.name }}は{{ val.price }}円＜/li></code>
+      <pre>
+        <ul>
+            <li v-for="(val, idx) in test4list" v-bind:key="val.name">{{idx}}{{ val.name }}は{{ val.price }}円</li>
+        </ul>
+      </pre>
+
+
+    </dd>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </dl>
+
+    <p>色々な種類のデータの表示方法を覚えました！</p>
+</div>
+<script>
+
+  var vm = new Vue({
+      el:"#app",
+      data:{
+          message:"heeeeelo",
+          url:"hogehgogehogeo.html",
+          msg : "msgmsgmsg",
+          inputer : "",
+          test2list: ['りんご', 'ばなな', 'いちご'],//配列
+          test3list: {　//連想配列
+              'a': 'ハンバーグ',
+              'b': '焼肉',
+              'c': 'パスタ'
+          },
+          test4list: [{//ネスとされた配列
+              'name': 'とまと',
+              'price': '100'
+          }, {
+              'name': 'れたす',
+              'price': '200'
+          }, {
+              'name': 'きゅうり',
+              'price': '300'
+          }],
+      }
+  });
+
+</script>
+</body>
+</html>

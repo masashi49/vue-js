@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="./test.css" media="screen">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body{
+      width:100%;
+    }
+    .header{
+      background: #ccc;
+      padding:10px;
+      border:1px solid #bbb;
+    }
+    .content{
+      padding:20px;
+    }
+    dt{
+      margin-bottom:5p;
+      font-size:22px;
+      font-weight:bold;
+    }
+    dt span{
+      color: #ff3366;
+
+    }
+    dd{
+      margin:0 0 30px;
+      padding:0 0 30px;
+      border-bottom:2px solid #dfdfdf;
+    }
+    code{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <h1>Vue.js で表示したデータの更新とイベント処理</h1>
+  <p>参考：http://chibinowa.net/note/vuejs/vue-2.html</p>
+</header>
+<div id="app" class="content">
+
+
+  <dl>
+    <dt>イベント処理を登録す <span>v-on</span></dt>
+    <dd>ボタンをクリックした時」など イベント を利用する <br>
+      <p>{{ hellow }}は{{ countr }}回クリックしたよ</p>
+      <button v-on:click="test1">click!</button>
+      <code v-pre>＜button v-on:click="test1">click!＜/button> <br><br>
+        data:{ <br>
+            countr: 0 <br>
+        }, <br>
+        methods:{<br>
+            test1:function () {<br>
+            this.countr ++<br>
+          }<br>
+        }
+      </code>
+
+    </dd>
+
+    <dt>リストのデータを更新する </dt>
+    <dd>
+      <ul>
+        <li v-for="value in listtest">{{ value }}</li>
+      </ul>
+      <input type="button" v-on:click="test2" value="交換"> <br>
+      <code v-pre>＜button v-on:click="test2">click!＜/button> <br></code>
+
+        <br>
+
+      配列の中身を表示している場合、その一部を変更するには　<br>
+      <code>this.$set(objct, key, value)</code>を使わなければならない。<br>
+      $setを使うことで、配列にアクセスすることができる。<br>
+      例えば、”りんご”を"バナナ"に変更しようとするなら　<br>
+      <pre><code>test2 : function(){
+        this.$set(listtest, 0, "バナナ")
+        }</code></pre>
+      とする必要がある
+
+    </dd>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </dl>
+
+    <p>色々な種類のデータの表示方法を覚えました！</p>
+</div>
+<script>
+
+  var vm = new Vue({
+      el:"#app",
+      data:{
+          hellow:"hellow world",
+          countr: 0,
+          listtest:["りんご" , "こあら" , "らっこ"]
+      },
+      methods:{
+          test1:function () {
+            this.countr ++,
+            this.hellow = "hellow vue.js"
+          },
+          test2: function () {
+              this.$set(this.listtest, 0, "もぶぶ")
+          }
+
+      }
+  });
+
+</script>
+</body>
+</html>
