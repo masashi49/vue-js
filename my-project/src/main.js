@@ -4,12 +4,25 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
+
+
+//グローバルにコンポーネントを定義
+Vue.component('my-components', {
+  template: `<div class="normal">
+    <p>テンプレート</p>
+    <p>テンプレート</p>
+  </div>`
+});
+
+
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: {
+    App,
+  },
 })

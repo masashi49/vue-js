@@ -11,9 +11,14 @@
         <li>
           <a href="http://localhost:8080/#/vuesan">v-if / v-show</a>
         </li>
+        <li>
+          <a href="http://localhost:8080/#/vueyon">コンポーネントの使いかた</a>
+        </li>
       </ul>
     </div>
   </div>
+
+
 </template>
 
 <script>
