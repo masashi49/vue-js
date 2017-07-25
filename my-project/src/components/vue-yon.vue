@@ -114,18 +114,6 @@
 
 
 
-
-
-
-  this.$validator.validateAll().then((result) => {
-    if (!result) {
-      return false;
-    }
-    this.isShowConfirmAccountScreen = true;
-    return true;
-  }, function (e) {
-    throw e
-  });
 </script>
 
 
