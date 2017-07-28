@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/hello'
 import vuesan from '@/components/vue-san'
 import vueyon from '@/components/vue-yon'
+import vueyontwo from '@/components/vue-yon2'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/vueyon',
       name: 'vueyon',
       component: vueyon
+    },
+    {
+      path: '/vueyontwo',
+      name: 'vueyontwo',
+      component: vueyontwo
     }
   ]
 })

@@ -62,10 +62,17 @@
       ┗class="set-class-name"付きコンポーネント
 
       <br><br><br>
+    </div>
 
+    <div class="page-data">
+      <h2 class="page-title">is="コンポーネント名"</h2>
       <p>条件でコンポーネントを選択するなど特別な理由がある場合 is="コンポーネント名" を使って要素をコンポーネントに置き換える事もできます。</p>
       <div is="my"></div>
-      ┗divタグをコンポーネントに置き換えている
+      ┗divタグをmyコンポーネントに置き換えている
+
+      <div is="my-components"></div>
+      ┗divタグをmy-componentsコンポーネントに置き換えている
+
       <pre v-pre="">
         ＜div is="my">＜/div>
       </pre>
@@ -73,22 +80,56 @@
 
 
     <div class="page-data">
-      <h2 class="page-title">テンプレートの中でタグを書いて使用できる</h2>
+      <h2 class="page-title">is="コンポーネント名"</h2>
+    <pre v-pre="">
+//グローバルにコンポーネントを定義
+Vue.component('my-components', {
+  template: `＜div class="normalnormalnormal">
+  ＜p>my-componentsのpタグ{{ message }}{{ message }}＜/p>
+  ＜/div>`,
+  data: function() {
+    return {
+      message: 'hello!'
+    }
+  }
+});
+    </pre>
+    </div>
+
+
+
+    <div class="page-data">
+      <h2 class="page-title">テンプレートの中でタグを書いて使用できる <span class="note">inline-template</span></h2>
       <p class="dec">コンポーネントの内側にある HTML をテンプレートとして使用します。記述されている場合 render 関数より優先度が高いです。</p>
       <my-components inline-template>
-        <p>テンプレート</p>
+        <p>asdfasdsdf</p>
       </my-components>
-
       <pre v-pre="">
-
         ＜my-components inline-template>
           ＜p>テンプレート＜/p>
         ＜/my-components>
-
-
-
       </pre>
+    </div>
 
+    <div class="page-data">
+      <h2 class="page-title">ハマりどころ <span>テンプレートは要素で囲もう</span></h2>
+      <p class="dec">囲まれていなかったり複数の要素は指定できないので注意なのです。</p>
+
+<pre v-pre="">
+これはNG
+Vue.extend({
+template: '＜p>テンプレート＜/p>＜p>テンプレート＜/p>'
+})
+htmlタグが２つ存在する
+</pre>
+
+<pre v-pre="">
+これはok
+Vue.extend({
+template: '＜div>＜p>テンプレート＜/p>＜p>テンプレート＜/p>＜/div>'
+})
+htmlタグ１つで囲む。
+</pre>
 
     </div>
 
@@ -112,20 +153,6 @@
     }
   }
 
-
-
-
-
-
-  this.$validator.validateAll().then((result) => {
-    if (!result) {
-      return false;
-    }
-    this.isShowConfirmAccountScreen = true;
-    return true;
-  }, function (e) {
-    throw e
-  });
 </script>
 
 
