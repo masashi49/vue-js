@@ -13,6 +13,8 @@
         </li>
         <li>
           <a href="http://localhost:8080/#/vueyon">コンポーネントの使いかた</a>
+        </li>        <li>
+          <a href="http://localhost:8080/#/vueyontwo">親子間にてデータ認識</a>
         </li>
       </ul>
     </div>

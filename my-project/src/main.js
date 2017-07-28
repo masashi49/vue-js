@@ -11,11 +11,44 @@ Vue.config.productionTip = false;
 
 //グローバルにコンポーネントを定義
 Vue.component('my-components', {
-  template: `<div class="normal">
-    <p>テンプレート</p>
-    <p>テンプレート</p>
-  </div>`
+  template: `<div class="normalnormalnormal">
+    <p>my-componentsのpタグ{{ message }}{{ message }}{{ message }}{{ message }}{{ message }}{{ message }}</p>
+  </div><p>a</p><p>b</p>`,
+  data: function() {
+    return {
+      message: 'hello!!!!'
+    }
+  }
 });
+
+
+Vue.component('child-comp', {
+  template: '<p>{{ kuma }}</p>',
+  props: ['kuma']
+})
+
+
+
+
+//グローバルにコンポーネントを定義
+Vue.component('child', {
+  template: `<div class="normalnormalnormal">{{ aaa }}{{ message }}だよ</div>`,
+  props: ['aaa'],
+  data: function() {
+    return {
+      message: `くまーくまー`
+    }
+  }
+});
+
+Vue.component('child-comp-on', {
+  template: '<button @click="$emit(\'childs-event\', message)">click!</button>',
+  data: function () {
+    return {
+      message: 'わんわん！'
+    }
+  }
+})
 
 
 new Vue({
@@ -25,4 +58,5 @@ new Vue({
   components: {
     App,
   },
+
 })
