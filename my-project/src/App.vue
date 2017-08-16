@@ -13,7 +13,8 @@
         </li>
         <li>
           <a href="http://localhost:8080/#/vueyon">コンポーネントの使いかた</a>
-        </li>        <li>
+        </li>
+        <li>
           <a href="http://localhost:8080/#/vueyontwo">親子間にてデータ認識</a>
         </li>
       </ul>
@@ -84,5 +85,6 @@ export default {
   .table-list li{
     display: table-cell;
     text-align: center;
+    border: 1px solid #ccc;
   }
 </style>

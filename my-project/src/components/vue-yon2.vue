@@ -15,7 +15,9 @@
         <li>
           子：　props でその属性を受け取る
         </li>
-        <li><span class="note">属性、または:(v-onの省略)つきの属性をpropで受け取</span>り、バインディングさせる。<br>子は props でその属性を受け取る事で値を使えるようになります。<br>別のデータに代入するみたいな感じですがスコープが違うので属性名はデータと同じでも別の名前を使ってもOK。</li>
+        <li><span class="note">属性、または:(v-onの省略)つきの属性をpropで受け取</span>り、バインディングさせる。<br>子は props
+          でその属性を受け取る事で値を使えるようになります。<br>別のデータに代入するみたいな感じですがスコープが違うので属性名はデータと同じでも別の名前を使ってもOK。
+        </li>
         <li><span class="note">属性名はなんでもいいが、よく使われるものにしておく、valやdataなど。</span></li>
         <li>「:」があれば、プロパティに対する値をバインド。「:」がなければただのテキストとして扱われる</li>
       </ul>
@@ -65,21 +67,22 @@ Vue.component('child', {
     </div>
 
 
-
     <div class="page-data">
       <h2 class="page-title">子供から親</h2>
       <p class="dec">
         親側のテンプレート内に子コンポーネントとして
-        <pre>＜child-comp v-on:childs-event="parentsMethod">＜/child-comp></pre>
+      <pre>＜child-comp v-on:childs-event="parentsMethod">＜/child-comp></pre>
       を仕込む
 
       </p>
 
       <child-comp-on @childs-event="parentsMethod($event, 'Dog')"></child-comp-on>
+      {{ parentsMethodsStr }}
 
-      </div>
+    </div>
 
-    <p class="dec"><a href="http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.html">http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.htmlわかりにくいのでここを読む</a></p>
+    <p class="dec"><a href="http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.html">http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.htmlわかりにくいのでここを読む</a>
+    </p>
   </div>
 </template>
 
@@ -92,11 +95,13 @@ Vue.component('child', {
         lender: 'lender',
         hellos: 'hello!!!',
         parentData: ['Alfa', 'Bravo', 'Charlie'],
+        parentsMethodsStr : ""
       }
     },
     methods: {
       parentsMethod: function (childVal, opt) {
-        alert(opt + ': ' + childVal) /* 子から受け取ったメッセージ */
+        this.parentsMethodsStr = opt + ': ' + childVal;
+        /* 子から受け取ったメッセージ */
       }
     }
 

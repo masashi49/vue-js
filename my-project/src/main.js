@@ -42,10 +42,10 @@ Vue.component('child', {
 });
 
 Vue.component('child-comp-on', {
-  template: '<button @click="$emit(\'childs-event\', message)">click!</button>',
+  template: '<div><input type="text" v-bind="hogehoge"><button @click="$emit(\'childs-event\', hogehoge)">click!</button></div>',
   data: function () {
     return {
-      message: 'わんわん！'
+      hogehoge: 'わんっっっっっっっっっっsわん！'
     }
   }
 })
