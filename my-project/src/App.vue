@@ -17,6 +17,9 @@
         <li>
           <a href="http://localhost:8080/#/vueyontwo">親子間にてデータ認識</a>
         </li>
+        <li>
+          <a href="http://localhost:8080/#/vueyonthree">インタラクティブなコンポーネントを作る</a>
+        </li>
       </ul>
     </div>
   </div>

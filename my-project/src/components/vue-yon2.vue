@@ -76,10 +76,30 @@ Vue.component('child', {
 
       </p>
 
-      <child-comp-on @childs-event="parentsMethod($event, 'Dog')"></child-comp-on>
-      {{ parentsMethodsStr }}
+      <child-comp-on @childs-event="parentsMethod" :sampleing="sampleing"></child-comp-on>
+      子供の値を親で受け取ったやつ⇨{{ parentsMethodsStr }}
 
     </div>
+
+
+
+    <div class="page-data">
+      <h2 class="page-title">子供から親　wanwancompo</h2>
+      <p class="dec">
+        wanwancompo
+      <pre>＜wanwancompo @childs-event="parentsMethod($event, 'Dog')">＜/wanwancompo></pre>
+      </p>
+
+      <wanwancompo @childs-event2="parentsMethod2($event, 'Dog')">
+          <div v-for="item in childVal">
+            {{item.a}}
+          </div>
+
+      </wanwancompo>
+
+    </div>
+
+
 
     <p class="dec"><a href="http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.html">http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.htmlわかりにくいのでここを読む</a>
     </p>
@@ -95,13 +115,19 @@ Vue.component('child', {
         lender: 'lender',
         hellos: 'hello!!!',
         parentData: ['Alfa', 'Bravo', 'Charlie'],
-        parentsMethodsStr : ""
+        parentsMethodsStr : "",
+        sampleing : "親の値だよ",
+        waowao :"", //子供から送られてくる値
+        childVal :{}
       }
     },
     methods: {
-      parentsMethod: function (childVal, opt) {
-        this.parentsMethodsStr = opt + ': ' + childVal;
+      parentsMethod: function (text) {
+        this.parentsMethodsStr = text;
         /* 子から受け取ったメッセージ */
+      },
+      parentsMethod2: function (childVal, opt) {
+        alert(opt + ': ' + childVal) /* 子から受け取ったメッセージ */
       }
     }
 
@@ -120,9 +146,6 @@ Vue.component('child', {
     color: #fff;
   }
 </style>
-
-
-
 
 
 

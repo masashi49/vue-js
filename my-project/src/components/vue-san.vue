@@ -11,6 +11,7 @@
       <p class="dec">v-show は display:none を付けて表示上でのみ見えなくしているのに対して v-if は DOM レベルで削除します</p>
     </div>
 
+    <div v-if="testvif">v-ifのテスト</div>
 
     <div class="page-data">
       <h2 class="page-title">v-showの書き方</h2>
@@ -114,7 +115,8 @@
           'name': 'きゅうり',
           'price': 300
         }],
-        message: 'Hello'
+        message: 'Hello',
+        testvif : true
       }
     },
     methods:{
