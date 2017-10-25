@@ -5,6 +5,8 @@
       </p>
     </div>
 
+    <Headparts :pattern="pattern" :common="common"></Headparts>
+
 
 
     <div class="page-data">
@@ -15,25 +17,28 @@
 
     </div>
 
-
-
-    <p class="dec"><a href="http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.html">http://kuroeveryday.blogspot.jp/2016/10/vuejs-components-emit-events.htmlわかりにくいのでここを読む</a>
     </p>
   </div>
 </template>
 
 <script>
+
+  import Headparts from './parts/Headparts';
+
+
   export default {
     name: 'vueyontwo',
     data () {
       return {
         messagge: 'インタラクティブなコンポーネントを作る',
-
+        common : 'propsで渡すcomon',
+        pattern : 'propsで渡すpattern'
       }
     },
-    methods: {
 
-    }
+    components: {
+      Headparts,
+    },
 
   }
 
